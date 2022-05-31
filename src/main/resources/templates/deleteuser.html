@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete user</title>
+</head>
+<body>
+<h2>Удалить спортсмена?</h2>
+<p></p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>:</td>
+        <td th:utext="${user.id}"></td>
+    </tr>
+    <tr>
+        <td>Имя</td>
+        <td>:</td>
+        <td th:utext="${user.firstName}"></td>
+    </tr>
+    <tr>
+        <td>Фамилия</td>
+        <td>:</td>
+        <td th:utext="${user.lastName}"></td>
+    </tr>
+    <tr>
+        <td>Пол</td>
+        <td>:</td>
+        <td th:utext="${user.gender}"></td>
+    </tr>
+    <tr>
+        <td>Вид спорта</td>
+        <td>:</td>
+        <td th:utext="${user.sport}"></td>
+    </tr>
+    <tr>
+        <td>Зарплата</td>
+        <td>:</td>
+        <td th:utext="${user.salary}"></td>
+    </tr>
+</table>
+<form th:action="@{/delete/{userId}(userId=${user.id})}" th:object="${user}" th:method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button type="submit" name="action" value="cancel">Отмена</button>
+    <button type="submit" name="action" value="delete">Удалить</button>
+</form>
+</body>
+</html>
